@@ -5,6 +5,7 @@ class DocsController < ApplicationController
     @docs = Doc.all.order("created_at DESC")
   end
   
+  #responsible only for the view file
   def new
     @doc = Doc.new
   end
@@ -24,16 +25,22 @@ class DocsController < ApplicationController
   end
   
 
-  
+    #responsible only for the view file
   def edit
   end
 
   
   def update
+    if @doc.update(doc_params)
+      redirect_to @doc
+    else
+      render 'edit'
+    end
   end
   
   def destroy
-    
+    @doc.destroy
+    redirect_to docs_path
   end
   
   # private methods apply to these controllers; 
