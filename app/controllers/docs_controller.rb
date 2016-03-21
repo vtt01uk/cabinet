@@ -7,12 +7,13 @@ class DocsController < ApplicationController
   
   #responsible only for the view file
   def new
-    @doc = Doc.new
+     @doc = current_user.docs.build
   end
   
   def create
     #create a new document will title and text
-    @doc = Doc.new(doc_params)
+#    @doc = Doc.new(doc_params)
+    @doc = current_user.docs.build(doc_params)
     if @doc.save
       redirect_to @doc
     else
@@ -23,7 +24,6 @@ class DocsController < ApplicationController
   def show
   end
   
-
     #responsible only for the view file
   def edit
   end
