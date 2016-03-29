@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .wrapper_with_padding
   #docs.clearfix
     - unless @docs.blank?    
@@ -12,3 +13,11 @@
       %p Start Creating Documents and Organising your life!
       %button= link_to "Create Doc", new_doc_path
 
+=======
+- @docs.each do |doc|
+  %h2= link_to doc.title, doc
+  %p= time_ago_in_words(doc.created_at)
+  %p= truncate(doc.content, length:80)
+  
+  = link_to 'Create Doc', new_doc_path
+>>>>>>> 07d632642737dfe1c82effdba2e74d731c75ab71
